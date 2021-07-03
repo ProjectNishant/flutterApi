@@ -40,8 +40,6 @@ class _ProposalsState extends State<Proposals> {
                           child: Center(child: Text('${widget.props[index]}')),
                         );
                       },
-                      // separatorBuilder: (BuildContext context, int index) =>
-                      //     const Divider(),
                     ),
                   ],
                 )
