@@ -59,48 +59,6 @@ class _DashboardState extends State<Dashboard> {
     print(_deviceData.toString());
   }
 
-  void _deviceAPI() async {
-    final response = await http.post(
-      Uri.parse('https://ssdqa.mobilicis.com/smartrouting/api/v1/getProposals'),
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        HttpHeaders.authorizationHeader:
-            // "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBUElVU0VSIiwiaWF0IjoxNjI1MDg0NTA5LCJleHAiOjE2MjUxNzA5MDl9.Wn_kbvVhqIWoteIHjFnwq6Nx61dOZ_R8xjt9vZVoZULrm3hH_ihxw_1A38hSTdLOf2-7oGFeqNTU-JPJWUoupw"
-            "${Constants.tokenType} ${Constants.accessToken}"
-      },
-      body: jsonEncode(<String, String>{
-        // 'make': 'LGE',
-        // 'model': 'NEXUS 5X',
-        'make': _deviceData['manufacturer'].toString(),
-        'model': _deviceData['model'].toString(),
-      }),
-    );
-
-    print('devAPI :  ' + json.decode(response.body).toString());
-
-    if (response.statusCode == 200) {
-      setState(() {
-        _apiData = json.decode(response.body);
-        var items = [];
-        for (var i in _apiData['data']['srtRecommendedProposals']) {
-          items.add(i['proposalType']);
-        }
-
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) {
-              return Proposals(props: items);
-            },
-          ),
-        );
-      });
-      // return DeviceCreds.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to load album');
-    }
-  }
-
   void _deviceManuallyAPI() async {
     final response = await http.post(
       Uri.parse('https://ssdqa.mobilicis.com/smartrouting/api/v1/getProposals'),
@@ -135,7 +93,6 @@ class _DashboardState extends State<Dashboard> {
         );
 
       });
-      // return DeviceCreds.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to load api');
     }
@@ -276,34 +233,6 @@ class _DashboardState extends State<Dashboard> {
                     '\nModel : '+ _deviceData['model'].toString()),
                 ),
 
-                // InkWell(
-                //   onTap: _deviceAPI,
-                //   child: Container(
-                //     width: MediaQuery.of(context).size.width,
-                //     padding: EdgeInsets.symmetric(vertical: 15),
-                //     alignment: Alignment.center,
-                //     decoration: BoxDecoration(
-                //         borderRadius: BorderRadius.all(Radius.circular(5)),
-                //         boxShadow: <BoxShadow>[
-                //           BoxShadow(
-                //               color: Colors.grey.shade200,
-                //               offset: Offset(2, 4),
-                //               blurRadius: 5,
-                //               spreadRadius: 2)
-                //         ],
-                //         gradient: LinearGradient(
-                //             begin: Alignment.centerLeft,
-                //             end: Alignment.centerRight,
-                //             colors: [
-                //               Colors.lightBlueAccent,
-                //               Colors.blueAccent
-                //             ])),
-                //     child: Text(
-                //       'Current Device Info',
-                //       style: TextStyle(fontSize: 20, color: Colors.white),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
