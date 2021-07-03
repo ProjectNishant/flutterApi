@@ -11,7 +11,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -104,7 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
             child: TextFormField(
               keyboardType: TextInputType.text,
               style: textStyle,
-//              validator: emailValidator,
               controller: _userName,
               decoration: InputDecoration(
                   labelText: 'User Name',
@@ -119,7 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
             child: TextFormField(
               keyboardType: TextInputType.text,
               style: textStyle,
-//              validator: emailValidator,
               controller: _passwd,
               decoration: InputDecoration(
                   labelText: 'Password',
