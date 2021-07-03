@@ -466,38 +466,6 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
               ? onTakePictureButtonPressed
               : null,
         ),
-        // IconButton(
-        //   icon: const Icon(Icons.videocam),
-        //   color: Colors.blue,
-        //   onPressed: cameraController != null &&
-        //       cameraController.value.isInitialized &&
-        //       !cameraController.value.isRecordingVideo
-        //       ? onVideoRecordButtonPressed
-        //       : null,
-        // ),
-        // IconButton(
-        //   icon: cameraController != null &&
-        //       cameraController.value.isRecordingPaused
-        //       ? Icon(Icons.play_arrow)
-        //       : Icon(Icons.pause),
-        //   color: Colors.blue,
-        //   onPressed: cameraController != null &&
-        //       cameraController.value.isInitialized &&
-        //       cameraController.value.isRecordingVideo
-        //       ? (cameraController.value.isRecordingPaused)
-        //       ? onResumeButtonPressed
-        //       : onPauseButtonPressed
-        //       : null,
-        // ),
-        // IconButton(
-        //   icon: const Icon(Icons.stop),
-        //   color: Colors.red,
-        //   onPressed: cameraController != null &&
-        //       cameraController.value.isInitialized &&
-        //       cameraController.value.isRecordingVideo
-        //       ? onStopButtonPressed
-        //       : null,
-        // )
       ],
     );
   }
@@ -540,7 +508,6 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   String timestamp() => DateTime.now().millisecondsSinceEpoch.toString();
 
   void showInSnackBar(String message) {
-    // ignore: deprecated_member_use
     _scaffoldKey.currentState?.showSnackBar(SnackBar(content: Text(message)));
   }
 
@@ -895,25 +862,3 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     showInSnackBar('Error: ${e.code}\n${e.description}');
   }
 }
-
-// class CameraApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: CameraExampleHome(),
-//     );
-//   }
-// }
-
-// List<CameraDescription> cameras = [];
-//
-// Future<void> main() async {
-//   // Fetch the available cameras before initializing the app.
-//   try {
-//     WidgetsFlutterBinding.ensureInitialized();
-//     cameras = await availableCameras();
-//   } on CameraException catch (e) {
-//     logError(e.code, e.description);
-//   }
-//   runApp(CameraApp());
-// }
